@@ -28,9 +28,98 @@ def criar_tabela():
     conn.close()
 
 
+def popular_banco():
+    """
+    Popula o banco com produtos de exemplo.
+    Usa INSERT OR IGNORE para evitar duplicação.
+    Compatível com Gunicorn e Render.
+    """
+    conn = conectar()
+    cursor = conn.cursor()
+    
+    # Lista de produtos com preços
+    produtos = [
+        # Bebidas
+        ("Café Tradicional", 6.00),
+        ("Refrigerantes (500 mL)", 10.00),
+        ("Café com Leite", 7.00),
+        ("Sucos Naturais", 10.00),
+        ("Café Expresso", 8.00),
+        ("Café Extraforte", 5.00),
+        ("Macchiato", 13.00),
+        ("Chás e Infusões", 5.00),
+        ("Mocha", 8.00),
+        ("Chocolate Quente", 7.00),
+        ("Iced Latte", 8.50),
+        ("Latte", 13.00),
+        ("Affogato", 26.00),
+        # Comidas
+        ("Pão de Queijo", 4.00),
+        ("Pão na Chapa", 6.00),
+        ("Sanduíches Naturais", 5.00),
+        ("Cookies", 18.00),
+        ("Macarons", 8.50),
+        ("Croissants", 12.00),
+        ("Empadas", 10.00),
+        ("Quiches", 20.00),
+        ("Sanduíches Tostados", 5.00),
+        ("Coxinhas", 16.00),
+        ("Pastéis", 17.50),
+        ("Fatias de Bolo Caseiro", 11.00),
+        ("Bombas de Chocolate", 10.00),
+        ("Tortas de Frutas", 20.00),
+        ("Croque Monsieur / Croque Madame", 45.00),
+        ("Brownies", 16.00),
+        ("Sanduíches Quentes", 5.00),
+        ("Pudins", 16.00),
+        # Combos
+        ("COMBO1:(MANHÃ CLASSICA)", 22.30),
+        ("COMBO2:(CHOCOLATE SUPREMO)", 19.70),
+        ("COMBO3:(SALGADO & REFRESCO)", 36.10),
+        ("COMBO4:(PARIS DOCE GOURMET)", 41.90),
+        ("COMBO5:(LEVE DA TARDE)", 25.50),
+        ("COMBO6:(CAFÉ BISTRÔ PREMIUM)", 74.60),
+        ("COMBO7:(ESCOLHA PERFEITA)", 24.00),
+        ("COMBO8:(CAFÉ COMPLETO TRADICIONAL)", 29.75),
+        ("COMBO10:(DOCE GELADO SIMPLES)", 18.90),
+        ("COMBO11:(COMPLETO DA CASA)", 50.00),
+        ("COMBO13:(FESTA SALGADA DOCE)", 52.40),
+        ("COMBO14:(CROISSANT CHOCOLATE LOVER)", 22.35),
+        ("COMBO16:(CLÁSSICO QUENTE & DOCE)", 25.20),
+        ("COMBO18:(NATURAL FRESH)", 50.00),
+        ("COMBO22:(LANCHE RÁPIDO PREMIUM)", 30.20),
+        ("COMBO26:(GELADO NATURAL)", 31.00),
+        ("COMBO28:(SALGADO COMPLETO)", 33.00),
+        ("COMBO32:(CAFÉ SIMPLES & CONFORTO)", 26.00),
+        ("COMBO33:(CAFÉ DA MANHÃ ESPECIAL)", 23.80),
+    ]
+    
+    try:
+        for nome, preco in produtos:
+            cursor.execute(
+                "INSERT OR IGNORE INTO produtos (nome, preco) VALUES (?, ?)",
+                (nome, preco)
+            )
+        conn.commit()
+        logging.info(f"✓ Banco populado com {len(produtos)} produtos")
+    except Exception as e:
+        logging.error(f"✗ Erro ao popular banco: {e}")
+    finally:
+        conn.close()
+
+
+def inicializar_banco():
+    """
+    Inicializa o banco: cria tabela e popula com dados.
+    Chamado na inicialização do app para compatibilidade com Render/Gunicorn.
+    """
+    criar_tabela()
+    popular_banco()
+
+
 # 👉 ESSA É A PARTE QUE RESOLVE NO RENDER
 with app.app_context():
-    criar_tabela()
+    inicializar_banco()
 
 
 # =========================
@@ -95,20 +184,6 @@ def buscar_produto_por_nome(nome_busca):
             return nome_db, preco
 
     return None, None
-
-def criar_tabela():
-    conn = conectar()
-    cursor = conn.cursor()
-
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS produtos (
-        nome TEXT PRIMARY KEY,
-        preco REAL
-    )
-    """)
-
-    conn.commit()
-    conn.close()
 
 respostas_bot = {
 #Opção matriz
@@ -859,5 +934,5 @@ def __debug_db():
     return jsonify(rows)
 
 if __name__ == "__main__":
-    criar_tabela()
+    inicializar_banco()
     app.run(debug=True)

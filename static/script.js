@@ -1,0 +1,1 @@
+function copiarCNPJ(texto) {navigator.clipboard.writeText(texto);}

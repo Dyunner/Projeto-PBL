@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="static/style.css">
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    </head>
+
+
+    <body class="pag-loc">
+
+
+        
+
+        <picture href="c s s/img/fotofundo.png.png"></picture>
+        <div class="area-principal">
+
+            <div class="cabecalho"> 
+                <h2 >Nossa localização</h2> 
+
+            </div>
+
+                <div class="conteudo">
+
+                    <p class="p1-loc">
+                    <b>Localização da nossa cafeteria:</b> Rua Vigário Calixto, nº 185, no bairro Catolé, em Campina Grande-PB, CEP 58410-340.
+                    </p> 
+
+                    <p class="p2-loc">
+                    Nossa localização é em um local que preza pelo os estabelecimentos de alto padrão, clínicas, academias, restaurantes, centros comerciais e diversos outros tipos de estabelecimentos. 
+                    Encontrando-se a poucos minutos o Partage Shopping Campina Grande, já que é um dos principais lugares de comércio e bem frequentado de toda a cidade. A região do local oferece um ambiente moderno, 
+                    aconchegante, não fugindo da experiência casual. Perfeito para momentos de lazer, reuniões de negócios ou encontros casuais, sendo um ótimo ambiente familiar.
+                    </p>
+                    <p class="p3-loc">
+                    O nosso bairro também é reconhecido pela a boa sensação de segurança, já que é frequentado por famílias, estudantes, profissionais e idosos ao longo de todo o dia e noite. Possuindo uma boa iluminação pública, 
+                    alto fluxo de pessoas durante toda a parte do dia e noite, Estacionamentos próximos e o fácil acesso pelas principais avenidas. E a facilidade para o acesso da nossa cafeteria é um ponto de extrema importância, 
+                    para indivíduos que possuem a rotina corrida ou até mesmo moradia distante. A nossa localização é em uma das avenidas mais importantes de toda a cidade, já que garante uma chegada fácil a qualquer ponto de Campina Grande sem estresse. 
+                    A aproximação de bairros como: Alto Branco, Centro e o Jardim Tavares. Também temos uma acesso rápido e fácil para as áreas comerciais e residenciais. 
+                    </p>
+                </div>
+
+
+                <div class="galeria-loc">
+                    <img src="static/img/fotoexterna.png.jpeg" alt="Ambiente externo">
+                    <a href="/mapa" style="text-decoration: none; color: inherit;">
+    <div style="cursor: pointer; width: 250px; margin: auto;">
+        
+        <img src="{{ url_for('static', filename='img/Dani.png') }}"
+             style="width: 100%; border-radius: 10px;">
+
+        <p style="text-align: center; margin-top: 10px;">
+            Clique para ver o mapa
+        </p>
+
+    </div>
+</a>
+                    <img src="static/img/fotointerna.png.jpeg" alt="Ambiente interno">
+                </div> 
+                <p>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</p>  
+                
+
+        </div>
+<div class="menu-inicio">
+        <ul>
+    <li>
+        <a href="{{ url_for('karinto') }}">
+            <i class="fa-solid fa-k"></i>
+            <span> Começo </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('nos') }}">
+            <i class="fa-solid fa-people-roof"></i>
+            <span> Nossa história </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('cardapio') }}">
+            <i class="fa-solid fa-book"></i>
+            <span> Cardápio </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('horarios') }}">
+            <i class="fa-solid fa-clock"></i>
+            <span> Horários </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('contato') }}">
+            <i class="fa-solid fa-phone"></i>
+            <span> Contatos </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('localizacao') }}">
+            <i class="fa-solid fa-location-dot"></i>
+            <span> Localização </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('index') }}">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span> Pesquisa </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('carrinho') }}">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span> Carrinho </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('chatbot') }}">
+            <i class="fa-regular fa-comment"></i>
+            <span> Chatbot </span>
+        </a>
+    </li>
+</ul>
+         
+        </div>
+         
+
+
+
+
+
+
+
+
+
+
+            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

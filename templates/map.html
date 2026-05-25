@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Localização</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="static/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+    <style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        color: #000;
+        background: #cfae8f;
+    }
+
+    h1 {
+        margin: 20px 0;
+    }
+
+    #map {
+        height: 500px;
+        width: 50%;
+        margin: auto;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+
+        /* 🔥 filtro pra puxar pro tom marrom/terra */
+        filter: sepia(85%) hue-rotate(-25deg) saturate(140%) brightness(92%);
+    }
+</style>
+
+<body class="mapa-loc">
+
+<p>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</p>
+<h1 class="cabecalho">Nossa Localização</h1>
+
+<div class="conteudo" style="font-size: 30px;">
+Rua Vigário Calixto, nº 185<br>
+Catolé - Campina Grande/PB<br>
+CEP: 58410-340
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+    var lat = -7.23;
+    var lon = -35.88;
+
+    var map = L.map('map').setView([lat, lon], 15);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap & CARTO'
+    }).addTo(map);
+
+    var greenIcon = L.icon({
+        iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
+        shadowUrl: "https://unpkg.com/leaflet/dist/images/marker-shadow.png",
+        iconSize: [25, 41],
+        iconAnchor: [12, 41]
+    });
+
+    L.marker([lat, lon], { icon: greenIcon }).addTo(map)
+        .bindPopup(`
+            <b style="color:#636B2F;">Karintó Coffe</b><br>
+            Rua Vigário Calixto, nº 185<br>
+            Catolé - Campina Grande/PB
+        `)
+        .openPopup();
+</script>
+
+<p>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</p>
+
+<div class="menu-inicio">
+        <ul>
+    <li>
+        <a href="{{ url_for('karinto') }}">
+            <i class="fa-solid fa-k"></i>
+            <span> Começo </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('nos') }}">
+            <i class="fa-solid fa-people-roof"></i>
+            <span> Nossa história </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('cardapio') }}">
+            <i class="fa-solid fa-book"></i>
+            <span> Cardápio </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('horarios') }}">
+            <i class="fa-solid fa-clock"></i>
+            <span> Horários </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('contato') }}">
+            <i class="fa-solid fa-phone"></i>
+            <span> Contatos </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('localizacao') }}">
+            <i class="fa-solid fa-location-dot"></i>
+            <span> Localização </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('index') }}">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span> Pesquisa </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('carrinho') }}">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span> Carrinho </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('chatbot') }}">
+            <i class="fa-regular fa-comment"></i>
+            <span> Chatbot </span>
+        </a>
+    </li>
+</ul>
+         
+        </div>
+
+</body>
+</html>

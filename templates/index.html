@@ -1,0 +1,123 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="pdd">Cardápio</title>
+</head>
+
+<body class="pdd">
+
+    <div id="search-page-container">
+        <h2 class="cabecalho">Pesquisa</h2>
+        
+        <h2 class="pjj">Digite o produto:</h2>
+
+        <form class="search-form-layout" method="POST" action="/index">
+            <input type="text" 
+                   class="bar" 
+                   name="produto"
+                   value="{{ nome }}" 
+                   required 
+                   inputmode="text"
+                   placeholder="Insira um item/combo válido!">
+            
+            <button type="submit" class="search-submit-btn">Buscar</button>
+        </form>
+        
+        <h2 class="search-result-label">Preço:</h2>
+
+        <div class="bar2">
+            <input class="search-result-input" type="text" value="{{ resultado }}" readonly>
+        </div>
+
+        <div style="margin-top:12px; font-size:12px; color:#b5b5b500;">
+            <strong>DEBUG:</strong>
+            <div>Recebido raw: {{ debug_received_raw or "-" }}</div>
+            <div>Recebido normalizado: {{ debug_received_norm or "-" }}</div>
+            <div>Resultado: {{ debug_result or "-" }}</div>
+        </div>
+
+        <form action="/adicionar" method="POST" style="display:inline;">
+  <input type="hidden" name="produto" value="{{ nome }}">
+
+  <button class="search-submit-btn" type="submit">
+    Adicionar ao Carrinho
+  </button>
+</form>
+        <p class="pan">Digite o número/combo desejados e prossiga para o carrinho</p>
+    </div>
+    <div class="menu-inicio">
+        <ul>
+    <li>
+        <a href="{{ url_for('karinto') }}">
+            <i class="fa-solid fa-k"></i>
+            <span> Começo </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('nos') }}">
+            <i class="fa-solid fa-people-roof"></i>
+            <span> Nossa história </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('cardapio') }}">
+            <i class="fa-solid fa-book"></i>
+            <span> Cardápio </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('horarios') }}">
+            <i class="fa-solid fa-clock"></i>
+            <span> Horários </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('contato') }}">
+            <i class="fa-solid fa-phone"></i>
+            <span> Contatos </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('localizacao') }}">
+            <i class="fa-solid fa-location-dot"></i>
+            <span> Localização </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('index') }}">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span> Pesquisa </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('carrinho') }}">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span> Carrinho </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('chatbot') }}">
+            <i class="fa-regular fa-comment"></i>
+            <span> Chatbot </span>
+        </a>
+    </li>
+</ul>
+         
+        </div>
+</body>
+</html>

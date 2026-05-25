@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="static/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="igg">
+
+<div class="cabecalho"> 
+    <h2>Chat de sugestões</h2> 
+</div>
+
+<div style="
+    background-color: rgba(255, 255, 255, 0.25); 
+    width: 800px; 
+    height: 650px;
+    border-radius: 20px;
+    margin: 20px auto;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+">
+
+    <button onclick="limparChat()" style="
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        background: #4b3621;
+        color: white;
+    ">
+        Limpar chat
+    </button>
+
+    <div id="chat" style="
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 10px;
+    "></div>
+
+    <div id="opcoes" style="
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: 100%;
+    "></div>
+
+</div>
+
+<script>
+
+function adicionarMensagem(texto, tipo) {
+    const chat = document.getElementById("chat");
+
+    let alinhamento = tipo === "user" ? "right" : "left";
+    let cor = tipo === "user" ? "#d1ffd6" : "#ffffff";
+
+    chat.innerHTML += `
+        <div style="text-align:${alinhamento}; margin:5px 0;">
+            <span style="
+                display:inline-block;
+                padding:8px 12px;
+                border-radius:10px;
+                background:${cor};
+                max-width:70%;
+            ">
+                ${texto}
+            </span>
+        </div>
+    `;
+
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function mostrarOpcoes(opcoes) {
+    const div = document.getElementById("opcoes");
+    div.innerHTML = "";
+
+    let opcoesOrdenadas = [...opcoes];
+    if (opcoesOrdenadas.length === 6) {
+        opcoesOrdenadas.reverse();
+    }
+
+    opcoesOrdenadas.forEach(opcao => {
+        const btn = document.createElement("button");
+
+        btn.innerText = opcao;
+
+        
+        btn.style.padding = "15px 10px";
+        btn.style.borderRadius = "10px";
+        btn.style.border = "none";
+        btn.style.cursor = "pointer";
+        btn.style.backgroundColor = "#4b3621"; 
+        btn.style.color = "white";            
+        btn.style.fontWeight = "600";
+        btn.style.width = "100%"; 
+
+        btn.onclick = () => enviar(opcao);
+
+        div.appendChild(btn);
+    });
+}
+
+function enviar(mensagem, mostrarUsuario = true) {
+    if (mostrarUsuario) {
+        adicionarMensagem(mensagem, "user");
+    }
+
+    fetch("/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ mensagem: message = mensagem })
+    })
+    .then(res => res.json())
+    .then(data => {
+        adicionarMensagem(data.texto, "bot");
+        mostrarOpcoes(data.opcoes);
+    });
+}
+
+function limparChat() {
+    document.getElementById("chat").innerHTML = "";
+    document.getElementById("opcoes").innerHTML = "";
+
+    iniciarChat();
+}
+
+function iniciarChat() {
+    adicionarMensagem("Oi chat, poderia me ajudar?!", "user");
+    enviar("inicio", false);
+}
+
+window.onload = () => {
+    iniciarChat();
+}
+
+</script>
+
+<div class="menu-inicio">
+    <ul>
+        <li><a href="{{ url_for('karinto') }}"><i class="fa-solid fa-k"></i> <span>Começo</span></a></li>
+        <li><a href="{{ url_for('nos') }}"><i class="fa-solid fa-people-roof"></i> <span>Nossa história</span></a></li>
+        <li><a href="{{ url_for('cardapio') }}"><i class="fa-solid fa-book"></i> <span>Cardápio</span></a></li>
+        <li><a href="{{ url_for('horarios') }}"><i class="fa-solid fa-clock"></i> <span>Horários</span></a></li>
+        <li><a href="{{ url_for('contato') }}"><i class="fa-solid fa-phone"></i> <span>Contatos</span></a></li>
+        <li><a href="{{ url_for('localizacao') }}"><i class="fa-solid fa-location-dot"></i> <span>Localização</span></a></li>
+        <li><a href="{{ url_for('index') }}"><i class="fa-solid fa-magnifying-glass"></i> <span>Pesquisa</span></a></li>
+        <li><a href="{{ url_for('carrinho') }}"><i class="fa-solid fa-cart-shopping"></i> <span>Carrinho</span></a></li>
+        <li><a href="{{ url_for('chatbot') }}"><i class="fa-regular fa-comment"></i> <span>Chatbot</span></a></li>
+    </ul>
+</div>
+
+</body>
+</html>

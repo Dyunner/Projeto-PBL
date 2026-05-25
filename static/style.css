@@ -1,0 +1,747 @@
+.area-principal{
+     min-height: 100vh;
+    padding: 40px 40px 40px 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.cabecalho, .zz{
+    background: rgba(255,255,255,0.18);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    border-radius: 18px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto; 
+    top: 0;
+    margin: 0 auto 30px auto;
+    min-width: 900px;
+    z-index: 100;
+    width: 100%;
+    min-height: 120px;
+    text-align: center;
+    letter-spacing: 8px;
+    font-size: 40px;
+    padding: 20px;
+    font-family: 'Lora', serif;
+}
+
+.conteudo{
+    font-family: "Montserrat", sans-serif;
+    max-width: 900px;
+    width: 100%;
+    padding: 40px;
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    
+    }
+
+*{
+    box-sizing: border-box;
+    }
+
+.conteudo p{
+    font-size: 20px;
+    line-height: 1.8;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.3);
+    word-break: break-word;
+    font-family:"lora", serif; 
+    font: bold;  
+}
+
+.pag-inicial{
+    background-image: url(img/fotohome.png.jpeg);
+    min-height: 100vh;
+    height: auto;
+    padding: 40px;
+    padding-bottom: 80px;
+    font-family:'Montserrat', sans-serif;
+    background-color: antiquewhite;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    position: relative;
+    overflow: visible;
+    }
+
+
+.pag-inicial::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.20);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.conteudo .cardapio-lista{
+    display: flex;
+    flex-direction: column;
+    gap: 45px;   
+}
+.categoria h3{
+    font-family: 'Cantarell',sans-serif;
+    font-size: 30px;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.item-cardapio{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+}
+
+.item-cardapio span:first-child{
+    font-weight: bold;
+}
+
+.item-cardapio span:last-child{
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.categoria p{
+    margin: 6px 0 18px 0;
+    font-family: 'montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    opacity: 0.85;
+    
+}
+
+
+.secao-nos .conteudo{
+    backdrop-filter: blur(6px);
+    background: rgba(255,255,255,0.18);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    border-radius: 18px;
+    font-family: "montserrat", sans-serif;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px;
+    border-radius: 18px;
+    
+}
+
+.secao-nos .conteudo p:last-child{
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.secao-nos .conteudo p{
+    font-family: "montserrat", sans-serif;
+    font-size: 22px;
+    line-height: 1.7;
+    text-align: justify;
+    
+}
+
+.galeria-loc{
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.galeria-loc img{
+    width: 250px;
+    height: 250px;
+    
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px;
+}
+
+
+.pag-loc .conteudo{
+    backdrop-filter: blur(6px);
+    background: rgba(255,255,255,0.18);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    border-radius: 18px;
+    font-family: "montserrat", sans-serif;
+}
+
+.horarios {
+    backdrop-filter: blur(6px);
+    background: rgba(255,255,255,0.18);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 25px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.horarios h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.horarios .linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: 22px;
+}
+
+.horarios .linha:last-child {
+  border-bottom: none;
+}
+
+.pag-contato .conteudo{
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 30px auto;
+    padding: 50px;
+    backdrop-filter: blur(6px);
+    background: rgba(255,255,255,0.18);
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.pag-contato .conteudo p:last-child{
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.menu-inicio{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 70px;
+    height: 100vh;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    transition: width 0.25s ease, background-color 0.25s ease;
+    z-index: 999;
+}
+
+.menu-inicio:hover{
+    width: 200px;
+    background-color: #636b2f;
+}
+
+.menu-inicio ul{
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-inicio li{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-inicio a{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 15px;
+    padding: 10px 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #E5C89A;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+.menu-inicio a:hover{
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.menu-inicio i{
+    color: #E5C89A;
+    flex-shrink: 0;
+    font-size: 20px;
+    width: 28px;
+    text-align: center;
+}
+
+.menu-inicio span{
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.menu-inicio:hover span{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.pag-pag{
+    background-image: url(img/fotofundo.png.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.pag-inicial, 
+.pag-cardapio,
+.pag-loc,
+.pag-nos,
+.pdd,
+.igg,
+.ht,
+.pag-contato,
+.pag-pagamento{
+    min-height: 100vh;
+    height: auto;
+    padding: 40px;
+    padding-bottom: 80px;
+    font-family:'Montserrat', sans-serif;
+    background-color: antiquewhite;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    background-attachment: fixed;
+    position: relative;
+    overflow: visible;
+    background-image: url(img/fotofundo.png.png);
+}
+.pag-inicial{
+    background-image: url(img/fotohome.png.jpeg);
+}
+
+
+.hora {background-image: url(img/fotohorario.png.jpeg);}
+
+.payment-container {
+    width: 350px;
+    margin: 50px auto;
+    padding: 25px;
+    background: #f5e6d3;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    font-family: Arial, sans-serif;
+}
+
+.payment-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4b2e2e;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #6b3e2e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+
+button:hover {
+    background: #4b2e2e;
+}
+
+
+.pagamento-opcoes{
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 35px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.opcao-pagamento{
+    width: 360px;
+    padding: 35px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+.opcao-pagamento h3{
+    text-align: center;
+    margin-bottom: 25px;
+    font-family: 'Lora', serif;
+    font-size: 26px;
+}
+
+.pix-box{
+    text-align: center;
+}
+
+.pix-box i{
+    font-size: 60px;
+    color: #4f7c39;
+    margin-bottom: 20px;
+}
+
+.payment-container{
+    margin: 0;
+}
+
+.payment-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.payment-container input,
+.payment-container select{
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.row{
+    display: flex;
+    gap: 15px;
+}
+
+.row div{
+    width: 100%;
+}
+
+.btn-pix,
+.payment-container button{
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-pix{
+    background-color: #4f7c39;
+}
+
+.payment-container button{
+    background-color: #75402f;
+}
+
+
+
+
+
+@media (max-width: 768px){
+    .area-principal{
+        margin-left: 0;
+        padding: 25px 20px 40px 90px;
+        align-items: center;
+    }
+
+    .cabecalho{
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto 20px auto;
+        text-align: center;
+    }
+    .cabecalho h2{
+        min-height: auto;
+        padding: 15px 0;
+        font-size: 28px;
+        letter-spacing: 4px;
+    }
+    .conteudo{
+        width: 100%;
+        max-width: 100%;
+        padding: 25px;
+        margin: 0 auto;
+    }
+    .conteudo p{
+        font-size: 20px;
+    }
+
+    .galeria-loc{
+        flex-direction: column;
+    }
+    .galeria-loc img{
+        width: 100%;
+        height: 220px;  
+    }
+    .secao-nos{
+        padding: 20px;
+    }
+    .secao-nos .conteudo{
+        padding: 25px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .secao-nos .conteudo p{
+        font-size: 16px;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    .item-cardapio{
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 16px;
+    }
+
+    .categoria h3{
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+
+    .categoria{
+        padding: 20px;
+    }
+    .categoria p{
+        font-size: 14px;
+    }
+}
+.piz {background-image: url(img/fotohorario.png.jpeg);}
+.pan {font-family: 'montserrat', sans-serif;font-size: 25px; align-content: center;text-align: center;}
+.pjj {font-family: 'montserrat', sans-serif;font-size: 30px; align-content: center;text-align: center;}
+.pdd {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    height: 100vh;
+}
+.search-form-layout {
+    display: flex;
+    align-items: center;    
+    justify-content: center; 
+    gap: 12px;              
+    width: 100%;
+    max-width: 800px;       
+    margin: 20px auto;
+}
+
+
+.bar {
+    flex: 1;                
+    max-width: 750px;
+    height: 45px;           
+    padding: 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box; 
+    margin: 0;              
+}
+
+
+.search-submit-btn {
+    width: 150px;           
+    height: 45px;           
+    background-color: #634033;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    margin: 0;             
+}
+
+.search-submit-btn:hover  {
+    background-color: #4a3026;
+}
+.search-result-label {
+    text-align: left; 
+    max-width: 650px;
+    margin: 20px auto 10px auto;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000;
+}
+
+
+.bar2 {
+    background-color: white; 
+    width: 100%;
+    max-width: 650px;        
+    height: 45px;            
+    margin: 0 auto;          
+    border-radius: 10px;     
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+    
+    
+    display: flex;
+    align-items: center;
+    padding-left: 15px;      
+}
+
+
+.search-result-input {
+    background: transparent;
+    border: none;           
+    outline: none;          
+    width: 100%;
+    font-size: 1.1rem;
+    color: #4b3621;         
+    cursor: default;        
+}
+
+
+.pan {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.carrinho-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+   
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);         
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    
+   
+    max-width: 500px;
+    margin: 50px auto; 
+}
+
+.carrinho-titulo {
+    margin-bottom: 25px;
+    font-size: 2rem;
+    color: #333;
+}
+
+
+.lista-itens {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.item-linha, .total-linha {
+    display: flex;
+    justify-content: space-between; 
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-size: 1.2rem;
+}
+
+.total-linha {
+    border-bottom: none;
+    margin-top: 10px;
+    font-size: 1.4rem;
+    color: #2d6a4f;
+}
+
+
+.btn-pagamento {
+    display: inline-block;
+    width: 100%;
+    padding: 15px;
+    background-color: #63473f;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+}
+
+.btn-pagamento:hover {
+    background-color: #4a352f;
+}
+
+.nota-rodape {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #666;
+}
+.search-submit-btn {
+    display: block;       
+    margin: 20px auto;    
+    padding: 10px 20px;   
+    cursor: pointer;      
+    
+    
+    background-color: #5d4037; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.erro {
+    background: #ff4d4d;
+    color: white;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+.mapa-loc{background-image: url(img/fotofundo.png.png) ;}
+
+.Rua{font-size: 20px;}

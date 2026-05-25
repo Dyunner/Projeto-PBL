@@ -1,57 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="static/style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="static/style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
-<body class="igg">
+<body class="igg chatbot-page">
 
 <div class="cabecalho"> 
     <h2>Chat de sugestões</h2> 
 </div>
 
-<div style="
-    background-color: rgba(255, 255, 255, 0.25); 
-    width: 800px; 
-    height: 650px;
-    border-radius: 20px;
-    margin: 20px auto;
+<div class="chat-wrapper">
 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    backdrop-filter: blur(10px);
-
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-">
-
-    <button onclick="limparChat()" style="
-        padding: 10px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        margin-bottom: 10px;
-        background: #4b3621;
-        color: white;
-    ">
+    <button onclick="limparChat()" class="clear-chat-btn">
         Limpar chat
     </button>
 
-    <div id="chat" style="
-        flex: 1;
-        overflow-y: auto;
-        margin-bottom: 10px;
-    "></div>
+    <div id="chat"></div>
 
-    <div id="opcoes" style="
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        width: 100%;
-    "></div>
+    <div id="opcoes"></div>
 
 </div>
 

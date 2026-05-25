@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Localização</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -26,15 +27,35 @@
         margin: 20px 0;
     }
 
+    .mapa-loc .conteudo {
+        font-size: 24px;
+        max-width: 900px;
+        width: 100%;
+        margin: auto;
+        padding: 25px;
+    }
+
     #map {
         height: 500px;
-        width: 50%;
+        width: 80%;
+        max-width: 900px;
+        min-height: 450px;
         margin: auto;
         border-radius: 12px;
         box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-
-        /* 🔥 filtro pra puxar pro tom marrom/terra */
         filter: sepia(85%) hue-rotate(-25deg) saturate(140%) brightness(92%);
+    }
+
+    @media (max-width: 768px) {
+        #map {
+            width: 100%;
+            height: 320px;
+        }
+
+        .mapa-loc .conteudo {
+            font-size: 18px;
+            padding: 20px;
+        }
     }
 </style>
 
@@ -43,7 +64,7 @@
 <p>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</p>
 <h1 class="cabecalho">Nossa Localização</h1>
 
-<div class="conteudo" style="font-size: 30px;">
+<div class="conteudo">
 Rua Vigário Calixto, nº 185<br>
 Catolé - Campina Grande/PB<br>
 CEP: 58410-340

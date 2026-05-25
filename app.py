@@ -78,20 +78,37 @@ def popular_banco():
         ("COMBO3:(SALGADO & REFRESCO)", 36.10),
         ("COMBO4:(PARIS DOCE GOURMET)", 41.90),
         ("COMBO5:(LEVE DA TARDE)", 25.50),
+        ("Cappuccino", 9.00),
         ("COMBO6:(CAFÉ BISTRÔ PREMIUM)", 74.60),
         ("COMBO7:(ESCOLHA PERFEITA)", 24.00),
         ("COMBO8:(CAFÉ COMPLETO TRADICIONAL)", 29.75),
+        ("COMBO9:(ENERGIA DO EXPRESSO)", 24.00),
         ("COMBO10:(DOCE GELADO SIMPLES)", 18.90),
         ("COMBO11:(COMPLETO DA CASA)", 50.00),
+        ("COMBO12:(EXPERIÊNCIA GOURMET ESPECIAL)", 96.80),
         ("COMBO13:(FESTA SALGADA DOCE)", 52.40),
         ("COMBO14:(CROISSANT CHOCOLATE LOVER)", 22.35),
+        ("COMBO15:(CAPPUCCINO CASEIRO)", 29.40),
         ("COMBO16:(CLÁSSICO QUENTE & DOCE)", 25.20),
+        ("COMBO17:(PARIS ESSENCIAL)", 32.75),
         ("COMBO18:(NATURAL FRESH)", 50.00),
+        ("COMBO19:(BISTRÔ TRADICIONAL)", 43.15),
+        ("COMBO20:(AFFOGATO DELUXE)", 69.60),
+        ("COMBO21:(CAFÉ & CROISSANT DOCE)", 20.60),
         ("COMBO22:(LANCHE RÁPIDO PREMIUM)", 30.20),
+        ("COMBO23:(CHÁ LEVE GOURMET)", 26.00),
+        ("COMBO24:(CHOCOLATE INTENSO)", 25.20),
+        ("COMBO25:(CAFÉ COLONIAL DOCE)", 23.80),
         ("COMBO26:(GELADO NATURAL)", 31.00),
+        ("COMBO27:(???)", 2.05),
         ("COMBO28:(SALGADO COMPLETO)", 33.00),
+        ("COMBO29:(CAFÉ DA TARDE SIMPLES)", 14.45),
+        ("COMBO30:(TRADICIONAL DOCE)", 32.80),
+        ("COMBO31:(CLÁSSICO EUROPEU)", 59.20),
         ("COMBO32:(CAFÉ SIMPLES & CONFORTO)", 26.00),
         ("COMBO33:(CAFÉ DA MANHÃ ESPECIAL)", 23.80),
+        ("COMBO34:(CHÁ COM DOCE)", 18.70),
+        ("Muffins", 16.00),
     ]
     
     try:
@@ -151,14 +168,63 @@ def extrair_codigo_busca(texto):
         if numero:
             return numero
 
+    if texto_norm.isdigit():
+        return texto_norm
+
     return texto_norm
 
 
 def eh_combo(texto):
-    return normalizar(texto).replace(" ", "").startswith("combo")
+    texto_norm = normalizar(texto).replace(" ", "")
+    return texto_norm.startswith("combo")
+
+NUMERO_PRODUTOS = {
+    "1": "Café Tradicional",
+    "2": "Café Extraforte",
+    "3": "Refrigerantes (500 mL)",
+    "4": "Café Expresso",
+    "5": "Cappuccino",
+    "6": "Macchiato",
+    "7": "Latte",
+    "8": "Affogato",
+    "9": "Café com Leite",
+    "10": "Iced Latte",
+    "11": "Mocha",
+    "12": "Sucos Naturais",
+    "13": "Chás e Infusões",
+    "14": "Chocolate Quente",
+    "15": "Pão de Queijo",
+    "16": "Pão na Chapa",
+    "17": "Croissants",
+    "18": "Quiches",
+    "19": "Empadas",
+    "20": "Sanduíches Naturais",
+    "21": "Sanduíches Tostados",
+    "22": "Sanduíches Quentes",
+    "23": "Coxinhas",
+    "24": "Pastéis",
+    "25": "Croque Monsieur / Croque Madame",
+    "26": "Fatias de Bolo Caseiro",
+    "27": "Tortas de Frutas",
+    "28": "Cookies",
+    "29": "Brownies",
+    "30": "Muffins",
+    "31": "Pudins",
+    "32": "Bombas de Chocolate",
+    "33": "Macarons",
+}
 
 
 def buscar_produto_por_nome(nome_busca):
+    nome_busca = nome_busca.strip()
+    busca_combo_numerico = False
+
+    if nome_busca.isdigit():
+        if nome_busca in NUMERO_PRODUTOS:
+            nome_busca = NUMERO_PRODUTOS[nome_busca]
+        else:
+            busca_combo_numerico = True
+
     conn = conectar()
     cursor = conn.cursor()
 
@@ -168,7 +234,7 @@ def buscar_produto_por_nome(nome_busca):
 
     termo_busca_norm = normalizar(nome_busca)
     codigo_busca = extrair_codigo_busca(nome_busca)
-    busca_combo = eh_combo(nome_busca)
+    busca_combo = eh_combo(nome_busca) or busca_combo_numerico
 
     for nome_db, preco in linhas:
         nome_db_norm = normalizar(nome_db)

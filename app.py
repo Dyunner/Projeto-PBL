@@ -12,6 +12,31 @@ logging.basicConfig(level=logging.DEBUG)
 def conectar():
     return sqlite3.connect("banco.db")
 
+
+def criar_tabela():
+    conn = conectar()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS produtos (
+        nome TEXT PRIMARY KEY,
+        preco REAL
+    )
+    """)
+
+    conn.commit()
+    conn.close()
+
+
+# 👉 ESSA É A PARTE QUE RESOLVE NO RENDER
+with app.app_context():
+    criar_tabela()
+
+
+# =========================
+# FUNÇÕES AUX
+# =========================
+
 def normalizar(texto):
     if not texto:
         return ""
@@ -22,6 +47,7 @@ def normalizar(texto):
         c for c in unicodedata.normalize('NFKD', texto)
         if not unicodedata.combining(c)
     )
+
 
 def extrair_codigo_busca(texto):
     texto_norm = normalizar(texto).replace(" ", "")
@@ -40,12 +66,15 @@ def extrair_codigo_busca(texto):
 
     return texto_norm
 
+
 def eh_combo(texto):
     return normalizar(texto).replace(" ", "").startswith("combo")
+
 
 def buscar_produto_por_nome(nome_busca):
     conn = conectar()
     cursor = conn.cursor()
+
     cursor.execute("SELECT nome, preco FROM produtos")
     linhas = cursor.fetchall()
     conn.close()
@@ -53,24 +82,18 @@ def buscar_produto_por_nome(nome_busca):
     termo_busca_norm = normalizar(nome_busca)
     codigo_busca = extrair_codigo_busca(nome_busca)
     busca_combo = eh_combo(nome_busca)
-    app.logger.debug('buscar_produto_por_nome termo_busca_norm = %r', termo_busca_norm)
 
     for nome_db, preco in linhas:
         nome_db_norm = normalizar(nome_db)
         codigo_db = extrair_codigo_busca(nome_db)
         item_combo = eh_combo(nome_db)
-        app.logger.debug('row nome_db=%r nome_db_norm=%r', nome_db, nome_db_norm)
+
         if nome_db_norm == termo_busca_norm:
-            app.logger.debug('match -> %r %s', nome_db, preco)
             return nome_db, preco
 
         if busca_combo and item_combo and codigo_db == codigo_busca:
-            app.logger.debug('match -> %r %s', nome_db, preco)
             return nome_db, preco
 
-    app.logger.debug('nenhum produto casou com %r', termo_busca_norm)
-
-    app.logger.debug('nenhum produto casou com %r', termo_busca_norm)
     return None, None
 
 def criar_tabela():

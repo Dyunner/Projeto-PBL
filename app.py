@@ -37,9 +37,9 @@ def popular_banco():
     conn = conectar()
     cursor = conn.cursor()
     
-    # Lista de produtos com preços
+   
     produtos = [
-        # Bebidas
+        
         ("Café Tradicional", 6.00),
         ("Refrigerantes (500 mL)", 10.00),
         ("Café com Leite", 7.00),
@@ -53,7 +53,7 @@ def popular_banco():
         ("Iced Latte", 8.50),
         ("Latte", 13.00),
         ("Affogato", 26.00),
-        # Comidas
+        
         ("Pão de Queijo", 4.00),
         ("Pão na Chapa", 6.00),
         ("Sanduíches Naturais", 5.00),
@@ -72,7 +72,7 @@ def popular_banco():
         ("Brownies", 16.00),
         ("Sanduíches Quentes", 5.00),
         ("Pudins", 16.00),
-        # Combos
+        
         ("COMBO1:(MANHÃ CLASSICA)", 22.30),
         ("COMBO2:(CHOCOLATE SUPREMO)", 19.70),
         ("COMBO3:(SALGADO & REFRESCO)", 36.10),
@@ -117,14 +117,12 @@ def inicializar_banco():
     popular_banco()
 
 
-# 👉 ESSA É A PARTE QUE RESOLVE NO RENDER
+
 with app.app_context():
     inicializar_banco()
 
 
-# =========================
-# FUNÇÕES AUX
-# =========================
+
 
 def normalizar(texto):
     if not texto:
